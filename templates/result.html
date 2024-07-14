@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .poll {
+            margin-bottom: 10px;
+        }
+        .option {
+            margin-left: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ poll.question }}</h1>
+    {{ poll.option_one_two }}
+    <!-- Option 1 -->
+    <div class="poll">
+        <span>{{ poll.option_one }}</span>
+         {{ poll.option_one_count }}
+    </div>
+    <div class="poll">
+        <span>{{ poll.option_two }}</span>
+        <span class="option"> {{ poll.option_two_count }}</span>
+    </div>
+    <div class="poll">
+        <span>{{ poll.option_three }}</span>
+        <span class="option"> {{ poll.option_three_count }}</span>
+    </div>
+
+    <!-- Add more options if needed -->
+    
+    <a href="/">Back to Homepage</a>
+</body>
+</html>

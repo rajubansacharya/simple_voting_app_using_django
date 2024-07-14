@@ -1,0 +1,92 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .options label {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Questionnaire</h1>
+        <form action="{% url 'create'%}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="question">Question:</label>
+                <!-- <textarea id="question" name="question" rows="3" required></textarea> -->
+                {% render_field form.question class="form-group" rows="3" %}
+            </div>
+            <div class="form-group options">
+                <label for="option_one">Option One:</label>
+                <!-- <input type="text" id="option_one" name="option_one" maxlength="30" required> -->
+                {% render_field form.option_one class="form-group options"%}
+                <label for="option_two">Option Two:</label>
+                <!-- <input type="text" id="option_two" name="option_two" maxlength="30" required> -->
+                {% render_field form.option_two class="form-group options"%}
+                <label for="option_three">Option Three:</label>
+                <!-- <input type="text" id="option_three" name="option_three" maxlength="30" required> -->
+                {% render_field form.option_three class="form-group options"%}
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

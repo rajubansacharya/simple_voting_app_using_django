@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Example</title>
+    <style>
+        /* Basic styling for centering content */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        /* Styling for the radio buttons */
+        .radio-container {
+            margin-top: 20px;
+        }
+        
+        .radio-container label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="{%url 'vote' poll.id%}">
+    {% csrf_token %}
+<h1> {{poll.question}} </h1>
+<div class="radio-container">
+    <label>
+    <input type="radio" name="poll" value="option1" required>
+    {{poll.option_one}}
+    </label> &nbsp;
+    <label>
+    <input type="radio" name="poll" value="option2" required>
+   {{poll.option_two}}
+    </label> &nbsp;
+    <label>
+    <input type="radio" name="poll" value="option3" required>
+    {{poll.option_three}}
+    </label> &nbsp;
+    <button type="submit" class="submit-btn">Submit</button>
+</div>
+</form>
+</body>
+</html>
